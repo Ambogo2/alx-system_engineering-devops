@@ -2,13 +2,20 @@
 # This script is displaying "bad luck" on 4th loop, "Good luch" on 8th loop "Best luck" on other
 
 i=0
-while [ "$i" -lt 10 ]; do
-    if [ "$i" -eq 3 ]; then
-        echo "bad luck"
-    elif [ "$i" -eq 7 ];then
-        echo "good luck"
-    else
-        echo 7
-    fi
+while [ "$i" -le 20 ]; do
+    echo "$i"
+    case $i in
+            "4")
+                echo "bad luck from china"
+                ;;
+
+            "9")
+                echo "bad luck from japan"
+                ;;
+
+            "17")
+                echo "bad luck from italy"
+                ;;
+    esac
     ((i++))
 done
