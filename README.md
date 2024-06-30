@@ -10,7 +10,7 @@ This repository contains all the system engineering and devops projects.
 ) : Shell_variables_expansions
 * [0x04](https://github.com/Ambogo2/alx-system_engineering-devops/tree/master/0x04-loops_conditions_and_parsing
 ) : Loops, conditions and parsing.
-* [0x05]((https://github.com/Ambogo2/alx-system_engineering-devops/tree/master/0x05-processes_and_signals
+* [0x05](https://github.com/Ambogo2/alx-system_engineering-devops/tree/master/0x05-processes_and_signals
 ) : Processes and signals.
 * [0x06](https://github.com/Ambogo2/alx-system_engineering-devops/tree/master/0x06-regular_expressions
 ) : Regular expression.
