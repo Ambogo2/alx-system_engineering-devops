@@ -2,7 +2,7 @@
 ## About
 This repository contains all the system engineering and devops projects.
 
-* 0x0O: shell_basics
+* [0x0O](https://github.com/Ambogo2/alx-system_engineering-devops/tree/master/0x01-shell_permissions): shell_basics
 * 0x01 : Shell permissions.
 * 0x02 : Shell_redirections
 * 0x03 : Shell_variables_expansions
