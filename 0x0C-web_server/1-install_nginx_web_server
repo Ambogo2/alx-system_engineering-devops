@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
-
-# installing nginx
+# Installing nginx on web-01
 sudo apt-get update
 sudo apt-get -y install nginx
 
-# allowing ngix on firewall
+# Allowing nginx in the firewall
 sudo ufw allow 'Nginx HTTP'
+
 # Creating the 'Hello world' file
-sudo echo "Hello, world!" | sudo tee /var/www/html/index.html
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Checking nginx configuration syntax
+sudo nginx -t
+
+# Starting nginx
 sudo service nginx restart
