@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Configures a new ubuntu machine by installing
 # Nginx server to listen on port 80
-# The server should return Hello world string
-
+# The server should return "Hello World" string
 
 # Installing Nginx
 sudo apt-get -y update
@@ -10,14 +9,14 @@ sudo apt-get -y install nginx
 
 # Creating a custom 404 error page with the desired content
 echo "Hello World!" | sudo tee /var/www/html/index.html
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+echo "Ceci n'est pas une page." | sudo tee /var/www/html/404.html
 
-# Configure Nginx to use this custom 404 error page
+# Configuring Nginx to use this custom 404 error page
 sudo sed -i '/server_name _;/a \
     error_page 404 /404.html;\n\
     location = /404.html {\n\
         internal;\n\
     }' /etc/nginx/sites-available/default
 
-        
-sudo service nginx start
+# Restarting Nginx
+sudo systemctl restart nginx
