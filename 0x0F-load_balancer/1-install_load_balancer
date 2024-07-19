@@ -21,8 +21,8 @@ backend web-backend
 # Back up the original haproxy.cfg file
 sudo cp -a /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.orig
 
-# Add your HAProxy configuration to haproxy.cfg
-echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
+# Replace the haproxy.cfg with the new configuration
+echo "$server_config" | sudo tee /etc/haproxy/haproxy.cfg > /dev/null
 
 # Enable and restart the HAProxy service
 sudo systemctl enable haproxy
