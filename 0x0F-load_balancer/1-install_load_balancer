@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Script to install and configure HAproxy om lb-01 server
+# Script to install and configure HAproxy on lb-01 server
 
-# installing and configuring HAproxy on lb-01 server
+# Updating packages and installing HAProxy on lb-01 server
 sudo apt-get -y update
 sudo apt-get -y install haproxy
 
-# edit the HAProxy config file
+# Edit the HAProxy config file
 server_config="
 frontend http
     bind *:80
@@ -18,14 +18,15 @@ backend web-backend
     server 249055-web-02 18.214.87.163:80 check
 "
 
-# Write the configuration to haproxy.cfg
-echo "$server_config" | sudo tee /etc/haproxy/haproxy.cfg
+# Back up the original haproxy.cfg file
+sudo cp -a /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.orig
 
-# Enable HAProxy to be started by the init script
-echo "ENABLED=1" | sudo tee /etc/default/haproxy
+# Add your HAProxy configuration to haproxy.cfg
+echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
 
-# Testing the HAProxy configuration file
-sudo haproxy -c -f /etc/haproxy/haproxy.cfg
+# Enable and restart the HAProxy service
+sudo systemctl enable haproxy
+sudo systemctl restart haproxy
 
-# Restart the HAProxy service
-sudo service haproxy restart
+# Verifying the status of HAProxy
+sudo systemctl status haproxy
