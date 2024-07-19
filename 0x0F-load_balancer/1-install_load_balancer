@@ -7,12 +7,12 @@ sudo apt-get -y install haproxy
 
 # edit the HAProxy config file
 server_config="
-frontend ambogo_frontend
+frontend http
     bind *:80
     mode http
-    default_backend ambogo_backend
+    default_backend web-backend
 
-backend ambogo_backend
+backend web-backend
     balance roundrobin
     server 249055-web-01 54.87.215.55:80 check
     server 249055-web-02 18.214.87.163:80 check
