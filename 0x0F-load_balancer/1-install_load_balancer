@@ -6,7 +6,8 @@ sudo apt-get -y update
 sudo apt-get -y install haproxy
 
 # Edit the HAProxy config file
-server_config="
+server_config=\
+"
 frontend http
     bind *:80
     mode http
@@ -17,16 +18,14 @@ backend web-backend
     server 249055-web-01 54.87.215.55:80 check
     server 249055-web-02 18.214.87.163:80 check
 "
+# Append the server configuration to HAProxy config file
+echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
 
-# Back up the original haproxy.cfg file
-sudo cp -a /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.orig
+# Enable HAProxy to be started by init script
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 
-# Replace the haproxy.cfg with the new configuration
-echo "$server_config" | sudo tee /etc/haproxy/haproxy.cfg > /dev/null
+# Test the HAProxy configuration file
+sudo haproxy -c -f /etc/haproxy/haproxy.cfg
 
-# Enable and restart the HAProxy service
-sudo systemctl enable haproxy
-sudo systemctl restart haproxy
-
-# Verifying the status of HAProxy
-sudo systemctl status haproxy
+# Restart the HAProxy service
+sudo service haproxy restart
