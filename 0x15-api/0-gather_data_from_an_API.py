@@ -5,7 +5,7 @@ import requests
 import sys
 
 if __name__ == "__main__":
-    
+
     url = "https://jsonplaceholder.typicode.com/"
 
     employee_id = sys.argv[1]
@@ -16,7 +16,10 @@ if __name__ == "__main__":
 
     params = {"userId": employee_id}
 
-    todos_response = requests.get(f"{url}todos", params={"userId": employee_id})
+    todos_response = requests.get(
+        f"{url}todos",
+        params=params
+    )
 
     todos = todos_response.json()
 
